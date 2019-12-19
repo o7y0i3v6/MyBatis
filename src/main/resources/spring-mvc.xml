@@ -64,7 +64,6 @@
 			<bean class="cn.tedu.spring.LoginInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
-	
 </beans>
 
 
