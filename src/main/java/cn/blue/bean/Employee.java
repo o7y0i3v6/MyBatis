@@ -12,24 +12,17 @@ public class Employee {
 	private String gender;
 	
 	
-	
 	public Integer getId() {
 		return id;
 	}
-
-
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-
-
 	public String getLast_Name() {
 		return last_Name;
 	}
-
-
 
 	public void setLast_Name(String last_Name) {
 		this.last_Name = last_Name;
@@ -41,8 +34,6 @@ public class Employee {
 		return email;
 	}
 
-
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -53,13 +44,9 @@ public class Employee {
 		return gender;
 	}
 
-
-
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
-
 
 	@Override
 	public String toString() {

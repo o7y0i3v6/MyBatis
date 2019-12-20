@@ -45,9 +45,9 @@ public class Mybatis {
 		//应该使用这种写法但这里并没有调出来
 		SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
 		//2 获取sqlSession对象
-		SqlSession openSession = sqlSessionFactory.openSession();
+		SqlSession sqlSession = sqlSessionFactory.openSession();
 		//3 获取接口的实现类对象
-		EmployeeMapper mapper = openSession.getMapper(EmployeeMapper.class);
+		EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
 		System.out.println(mapper);
 		Employee employee = mapper.getEmpById(1);
 		System.out.println(employee);
