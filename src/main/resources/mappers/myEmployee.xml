@@ -9,10 +9,13 @@ id:唯一标识
 resultType:返回值类型
 #{id}:从传递过来的参数中取出id值 
  -->
-  <select id="CBBESelectEmp" resultType="cn.blue.bean.Employee">
+  <select id="CBBESelectEmp" resultType="cn.blue.bean.Employee" 
+  databaseId="msq">
     select * from t_emp where id = #{id}
   </select>
-   <select id="getEmpById" resultType="cn.blue.bean.Employee">
+  
+   <select id="getEmpById" resultType="cn.blue.bean.Employee"
+   databaseId="msq">
     select * from t_emp where id = #{id}
   </select>
 </mapper>

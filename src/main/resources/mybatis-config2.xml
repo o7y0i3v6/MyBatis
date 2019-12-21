@@ -43,6 +43,13 @@
       </dataSource>
     </environment>
   </environments>
+ <!-- databaseIdProvider支持多数据库厂商 
+ type="DB_VENDOR"的作用是得到数据库厂商的标识,MyBatis就能根据数据库厂商标识
+ 来执行不同的sql
+ 数据库厂商标识是驱动自带的-->
+  <databaseIdProvider type="DB_VENDOR">
+  <property name="MySQL" value="msq"/>
+  </databaseIdProvider>
   <mappers>
     <mapper resource="mappers/myEmployee.xml"/>
   </mappers> 
