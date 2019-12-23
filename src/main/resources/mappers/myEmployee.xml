@@ -11,11 +11,18 @@ resultType:返回值类型
  -->
   <select id="CBBESelectEmp" resultType="cn.blue.bean.Employee" 
   databaseId="msq">
-    select * from t_emp where id = #{id}
+    select * from t_emp where id = #{uidTest}
   </select>
-  
+   
    <select id="getEmpById" resultType="cn.blue.bean.Employee"
    databaseId="msq">
-    select * from t_emp where id = #{id}
+    select * from t_emp where id = #{uidTest}
   </select>
+  
+  <insert id="addEmp" parameterType="cn.blue.bean.Employee"
+  	useGeneratedKeys="true" keyProperty="id">
+  	insert into t_emp(last_name,email,gender)
+  	values(#{lastName},#{email},#{gender})
+  </insert> 
+  
 </mapper>

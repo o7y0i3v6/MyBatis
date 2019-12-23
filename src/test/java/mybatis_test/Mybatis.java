@@ -26,7 +26,7 @@ public class Mybatis {
 			System.out.println(employee);
 		} 
 	}
-	
+
 	/**
 	 * 该类方法会创建SqlSessionFactory对象
 	 * @return new SqlSessionFactoryBuilder().build(inputStream);
@@ -38,7 +38,7 @@ public class Mybatis {
 		InputStream inputStream = Resources.getResourceAsStream(resource);
 		return new SqlSessionFactoryBuilder().build(inputStream);
 	}
-	
+
 	@Test
 	public void test1() throws IOException{
 		//1 获取sqlSessionFactory对象 
@@ -52,4 +52,29 @@ public class Mybatis {
 		Employee employee = mapper.getEmpById(1);
 		System.out.println(employee);
 	}
+
+	@Test
+	public void test2() throws IOException{
+		//1 获取sqlSessionFactory
+		SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
+		try(SqlSession sqlSession = sqlSessionFactory.openSession();){
+			EmployeeMapper mapper = 
+					sqlSession.getMapper(EmployeeMapper.class);
+			Employee employee = new Employee(null, "1", "2", "3");
+			mapper.addEmp(employee);
+			System.out.println(employee.getId());
+			sqlSession.commit();
+			
+			/*
+			 * 封装数据，方便一会传参
+			 * Employee employee = new Employee(2, "3", "2", "3");
+			 * 用封装数据的对象更新数据库
+			 * boolean updateEmp = mapper.updateEmp(employee);  
+			 * 输出返回值
+			 * System.out.println(updateEmp);
+			 * 
+			 */
+		} 
+
+	}	
 }

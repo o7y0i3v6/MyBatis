@@ -7,11 +7,22 @@ package cn.blue.bean;
  */
 public class Employee {
 	private Integer id;
-	private String last_Name;
+	private String lastName;
 	private String email;
 	private String gender;
 	
 	
+	
+	public Employee() {
+	}
+
+	public Employee(
+			String id, String lastName, String email, String gender) {
+		this.lastName = lastName;
+		this.email = email;
+		this.gender = gender;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -21,11 +32,11 @@ public class Employee {
 	}
 
 	public String getLast_Name() {
-		return last_Name;
+		return lastName;
 	}
 
 	public void setLast_Name(String last_Name) {
-		this.last_Name = last_Name;
+		this.lastName = last_Name;
 	}
 
 
@@ -50,6 +61,6 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", lastName111=" + last_Name + ", email=" + email + ", gender=" + gender + "]";
+		return "Employee [id=" + id + ", lastName111=" + lastName + ", email=" + email + ", gender=" + gender + "]";
 	}
 }
