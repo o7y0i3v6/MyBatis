@@ -2,6 +2,9 @@ package mybatis_test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -60,21 +63,53 @@ public class Mybatis {
 		try(SqlSession sqlSession = sqlSessionFactory.openSession();){
 			EmployeeMapper mapper = 
 					sqlSession.getMapper(EmployeeMapper.class);
+			//创建对象 用有参构造传值，只要传值就可以，也可以用get set方法。
 			Employee employee = new Employee(null, "1", "2", "3");
 			mapper.addEmp(employee);
 			System.out.println(employee.getId());
-			sqlSession.commit();
-			
-			/*
-			 * 封装数据，方便一会传参
-			 * Employee employee = new Employee(2, "3", "2", "3");
-			 * 用封装数据的对象更新数据库
-			 * boolean updateEmp = mapper.updateEmp(employee);  
-			 * 输出返回值
-			 * System.out.println(updateEmp);
-			 * 
-			 */
+			sqlSession.commit();	
 		} 
+	}
+	@Test
+	public void test3() throws IOException{
+		//1 获取sqlSessionFactory
+		SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
+		
+		try(SqlSession sqlSession = sqlSessionFactory.openSession();){
+			
+			EmployeeMapper mapper = 
+					sqlSession.getMapper(EmployeeMapper.class);
+			Map<String,Object> map = new HashMap<>();
+			map.put("id",1);
+			//map.put("lastName","Tom");
+			Employee employee = mapper.getEmpByMap(map);
+			System.out.println(employee);
+			//mapper.addEmp(employee);
+			//sqlSession.commit();	
+			
+		} 		
+	}
 
-	}	
+	/*
+	 *     封装数据，方便一会传参
+	 *  Employee employee = new Employee(2, "3", "2", "3");
+	 *     用封装数据的对象更新数据库
+	 * boolean updateEmp = mapper.updateEmp(employee);  
+	 *     输出返回值
+	 *  System.out.println(updateEmp);
+	 * 
+	 */
+	@Test
+	public void test4() throws IOException{
+		SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
+		try(SqlSession sqlSession = sqlSessionFactory.openSession();){
+			EmployeeMapper mapper =  
+					sqlSession.getMapper(EmployeeMapper.class);
+			Employee employee = new Employee(2, "1", "2", "3");
+			boolean updateEmp = mapper.updateEmp(employee);
+			System.out.println(updateEmp);
+			System.out.println(employee.getId());
+			sqlSession.commit();	
+		} 
+	}
 }

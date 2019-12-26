@@ -17,7 +17,7 @@ public class Employee {
 	}
 
 	public Employee(
-			String id, String lastName, String email, String gender) {
+			Integer id, String lastName, String email, String gender) {
 		this.lastName = lastName;
 		this.email = email;
 		this.gender = gender;
