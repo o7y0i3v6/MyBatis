@@ -1,7 +1,7 @@
 package cn.blue.bean;
 /**
  * 
- * 
+ * 这个类可以封装返回的结果
  * @author JAVA
  *
  */
@@ -11,8 +11,7 @@ public class Employee {
 	private String email;
 	private String gender;
 	
-	
-	
+
 	public Employee() {
 	}
 
@@ -38,8 +37,6 @@ public class Employee {
 	public void setLast_Name(String last_Name) {
 		this.lastName = last_Name;
 	}
-
-
 
 	public String getEmail() {
 		return email;
