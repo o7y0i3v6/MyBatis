@@ -14,6 +14,13 @@ import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import cn.blue.mapper.EmployeeMapper;
 
+/**
+ * 
+ * 
+ * 
+ * @author JAVA
+ *
+ */
 public class Mybatis2 {
 
 	MapperScannerConfigurer msc;
