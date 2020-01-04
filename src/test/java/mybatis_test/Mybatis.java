@@ -26,7 +26,7 @@ public class Mybatis {
 		//2、获取sqlSession实例 能直接执行已经映射的sql语句
 		try(SqlSession openSession = sqlSessionFactory.openSession();){
 			//与spring整合时，底层依然是调用SqlSession的实例。
-			Employee employee = openSession.selectOne("CBBESelectEmp",1);
+			Employee employee = (Employee)openSession.selectOne("cn.blue.mapper111.E",1);
 			System.out.println(employee);
 		} 
 	}
