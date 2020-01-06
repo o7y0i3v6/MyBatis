@@ -26,6 +26,7 @@
   </databaseIdProvider>
   <mappers>
   <!-- 这里也可以用class直接关联mapper类 mybatis直接识别同名的SQl xml -->
+  <!-- resource:引用类路径下的映射文件 --> 
     <mapper resource="mappers/myEmployee.xml"/>
   </mappers>
 </configuration>
