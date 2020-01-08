@@ -2,7 +2,8 @@ package cn.blue.mapper;
 
 import java.util.Map;
 /**
- * 
+ * 注册的接口，
+ * 定义已映射的sql语句与其关联。
  *
  */
 import cn.blue.bean.Employee;
