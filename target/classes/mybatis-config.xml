@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<!-- 指明查询数据怎样对应 -->
+<settings>
+  		<setting name="mapUnderscoreToCamelCase" value="true"/>
+  	</settings>
+
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url"
+         value="jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Chongqing"/>
+        <property name="username" value="root"/>
+        <property name="password" value=""/>
+      </dataSource>
+    </environment>
+  </environments>
+    <databaseIdProvider type="DB_VENDOR">
+  <property name="MySQL" value="msq"/>
+  </databaseIdProvider>
+  <mappers>
+  <!-- 这里也可以用class直接关联mapper类 mybatis直接识别同名的SQl xml -->
+  <!-- resource:引用类路径下的映射文件 --> 
+    <mapper resource="mappers/myEmployee.xml"/>
+  </mappers>
+</configuration>

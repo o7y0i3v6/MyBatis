@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<properties resource="db.properties"></properties>
+
+<!-- 使数据库的带下划线的字段匹配bean类中的驼峰命名法 -->
+ 	<settings>
+  		<setting name="mapUnderscoreToCamelCase" value="true"/>
+  	</settings>
+  
+  <!-- 别名处理器 -->
+  	<typeAliases>
+  	<!-- 这里写封装查询数据的类
+  			type:指定要起别名的对象的全类型，；默认别名就是类名小写。
+  			alias:指定新的类名。
+  				 -->
+  				 <!-- 这样在sql映射的resulttype里就可以写emp了，而不用写
+  				 全类名 -->
+		<typeAlias type="cn.blue.bean.Employee" alias="emp"/>
+		<!-- 批量起别名 
+			package： 为某个包下的所有类批量起别名
+			name: 指定包名(
+				为当前包以及下 
+				面所有的后代包的每一个类都自动起一个默认别名(类名小写)
+				但是不同包下同名类会因为别名相同导致报错，应当使用
+				@Alias("")为类起指定别名)
+				-->
+		<package name="cn.blue.bean"/>
+	</typeAliases>
+
+<!-- 以下内容导入会引用配置文件的信息 -->
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url"
+         value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+ <!-- databaseIdProvider支持多数据库厂商 
+ type="DB_VENDOR"的作用是得到数据库厂商的标识,MyBatis就能根据数据库厂商标识
+ 来执行不同的sql
+ 数据库厂商标识是驱动自带的-->
+  <databaseIdProvider type="DB_VENDOR">
+  <property name="MySQL" value="msq"/>
+  </databaseIdProvider>
+  <mappers>
+    <mapper resource="mappers/myEmployee.xml"/>
+  </mappers> 
+</configuration>

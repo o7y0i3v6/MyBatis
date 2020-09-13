@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.blue.mapper111">
+<!-- 
+namepace:名称空间,指定为借口的全类名。
+id:唯一标识
+resultType:返回值类型
+#{id}:从传递过来的参数中取出id值 
+ -->
+  <select id="E" resultType="cn.blue.bean.Employee" 
+  databaseId="msq">
+    select * from t_emp where id = #{uidTest};
+  </select>
+   
+   <select id="getEmpById" resultType="cn.blue.bean.Employee"
+   databaseId="msq">
+    select * from t_emp where id = #{uidTest};
+  </select>
+   <select id="getEmpByMap" resultType="cn.blue.bean.Employee"
+   databaseId="msq">
+    select * from t_emp where id = #{id};
+  </select>
+  
+  <insert id="addEmp" parameterType="cn.blue.bean.Employee"
+  	useGeneratedKeys="true" keyProperty="id">
+  	insert into t_emp(last_name,email,gender)
+  	values(#{lastName},#{email},#{gender});
+  </insert> 
+  
+  <update id="updateEmp" parameterType="cn.blue.bean.Employee"
+  useGeneratedKeys="true" keyProperty="id">
+  	
+  
+  </update>
+  
+</mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<!-- namespace：当前XML对应接口文件是哪个 -->
+<mapper namespace="cn.tedu.mybatis.UserMapper">
+
+	<!-- id：对应的抽象方法的名称 -->
+	<insert id="addnew">
+		INSERT INTO t_user (
+			username, password, 
+			age, phone, 
+			email
+		) VALUES (
+			#{username}, #{password}, 
+			#{age}, #{phone}, 
+			#{email}
+		)
+	</insert>
+	<delete id="deleteById">
+		DELETE FROM t_user WHERE id=#{id}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
